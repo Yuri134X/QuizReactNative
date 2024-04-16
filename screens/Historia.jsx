@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Button} from 'react-native'
 
 const História = () => {
     return (
@@ -18,10 +18,23 @@ const História = () => {
 <br/>
 
             <View style= {styles.buttons}>
-            <button> Cristiano ronaldo</button>
-            <button>M. Deodoro da fonseca</button>
-            <button> Bolsonaro</button>
-            <button> fernando collor</button>
+            <Button 
+            onPress={false}
+            title="Cristiano ronaldo"
+            /> 
+            <Button 
+            onPress={true}
+            title="M. Deodoro da fonseca"
+            />
+            <Button 
+            onPress={false}
+            title="Bolsonaro"
+            /> 
+            <Button 
+            onPress={false}
+            title="fernando collor"
+            /> 
+            
             </View>
 
         </View>
