@@ -3,7 +3,8 @@ import {StyleSheet, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import homeScreen from './screens/homeScreen';
-import ModelScreen from './screens/ModelScreen';
+import História from './screens/Historia';
+import Quiz2 from './screens/Quiz2';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,9 +14,11 @@ export default function App() {
     <NavigationContainer>
         <Stack.Navigator initialRouteName='Home'>
 
-          <Stack.Screen name='Model' component={ModelScreen}  />
-
           <Stack.Screen name='Home' component={homeScreen}  />
+
+          <Stack.Screen name='Historia' component={História}  />
+
+          <Stack.Screen name='Quiz2' component={Quiz2}  />
           
         </Stack.Navigator>
 
