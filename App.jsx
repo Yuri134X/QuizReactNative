@@ -14,11 +14,11 @@ export default function App() {
     <NavigationContainer>
         <Stack.Navigator initialRouteName='Home'>
 
-          <Stack.Screen name='Home' component={homeScreen}  />
+          <Stack.Screen name='Home' component={homeScreen} />
 
-          <Stack.Screen name='Historia' component={História}  />
+          <Stack.Screen name='Historia' component={História} />
 
-          <Stack.Screen name='Quiz2' component={Quiz2}  />
+          <Stack.Screen name='Quiz2' component={Quiz2} />
           
         </Stack.Navigator>
 

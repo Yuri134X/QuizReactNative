@@ -1,34 +1,34 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 
-const História = () => {
+const Quiz2 = () => {
     return (
         <View style= {styles.body}>
-            <Text >Quem foi o primeiro presidente do Brasil?</Text>
+            <Text >Quem descobriu o Brasil?</Text>
 <br/>
 
         <View>
             <Image
             style={styles.tinyLogo}
             source={{
-            uri: 'https://rankingpesquisa.com.br/wp-content/uploads/2021/07/223860897_4116094155147465_3539709508465205851_n.jpg',
+            uri: 'https://conteudo.imguol.com.br/c/entretenimento/dc/2018/04/20/envie-um-meme-engracado-para-o-bol-11-97335-6855-1524197722204_v2_615x300.jpg',
             }}/>
         </View>
 
 <br/>
 
             <View style= {styles.buttons}>
-            <button> Cristiano ronaldo</button>
-            <button>M. Deodoro da fonseca</button>
-            <button> Bolsonaro</button>
-            <button> fernando collor</button>
+            <button>Pedro alvares cabral</button>
+            <button>Os indio</button>
+            <button> viajante do tempo</button>
+            <button> Don pedro 1°</button>
             </View>
 
         </View>
     )
 }
 
-export default História
+export default Quiz2
 
 const styles = StyleSheet.create({
     body: {
