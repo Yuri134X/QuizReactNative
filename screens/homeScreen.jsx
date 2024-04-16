@@ -18,10 +18,9 @@ const homeScreen = ({navigation}) => {
                 onPress={() => {navigation.navigate("Quiz2")}}
                 /></View>
 
-                
                 <View> <Button
-                title='História'
-                onPress={() => {navigation.navigate("Historia")}}
+                title='Pergunta 3'
+                onPress={() => {navigation.navigate("Quiz3")}}
                 /></View>
                  
             
@@ -35,7 +34,9 @@ const styles = StyleSheet.create({
     body: {
         flex: 10, 
         justifyContent: 'center',
-        alignItems:'center'}
+        alignItems:'center',
+    margin: '10PX'}, 
+    
 })
 
 
