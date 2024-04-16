@@ -1,7 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Button} from 'react-native'
 
 const Quiz3 = () => {
+    var pontos = 0
+
+    
     return (
         <View style= {styles.body}>
             <Text >Quem descobriu o Brasil?</Text>
@@ -18,10 +21,13 @@ const Quiz3 = () => {
 <br/>
 
             <View style= {styles.buttons}>
-            <button>Pedro alvares cabral</button>
-            <button>Os indio</button>
-            <button> viajante do tempo</button>
-            <button> Don pedro 1°</button>
+
+            <Button onPress={pontos++}>Pedro alvares cabral</Button>
+            <Button>Os indio</Button>
+            <Button> viajante do tempo</Button>
+            <Button> Don pedro 1°</Button>
+            <Text>{pontos}</Text>
+
             </View>
 
         </View>

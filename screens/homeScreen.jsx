@@ -6,7 +6,7 @@ const homeScreen = ({navigation}) => {
     navigation = useNavigation()
     return (
         <View style= {styles.body}>
-            <Text> bem vindo ao quiz</Text>
+            <Text> Bem vindo ao QUIZ</Text>
             <Text>Selecione a categoria abaixo </Text>
             <View> <Button
                 title='História'
