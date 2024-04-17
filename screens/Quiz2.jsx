@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Button } from 'react-native'
 
 const Quiz2 = () => {
     return (
@@ -18,10 +18,10 @@ const Quiz2 = () => {
 <br/>
 
             <View style= {styles.buttons}>
-            <button>Vasco</button>
-            <button>Suicidio com 6 tiros nas costas</button>
-            <button> viajante do tempo</button>
-            <button> literalmente ele</button>
+            <Button>Vasco</Button>
+            <Button>Suicidio com 6 tiros nas costas</Button>
+            <Button> viajante do tempo</Button>
+            <Button> literalmente ele</Button>
             </View>
 
         </View>
