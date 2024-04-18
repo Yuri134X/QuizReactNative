@@ -1,10 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, Button } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
-const Quiz2 = () => {
+const Quiz2 = ({navigation}) => {
+    navigation = useNavigation()
     return (
         <View style= {styles.body}>
-            <Text >Quem Matou hitler?</Text>
+            <h1 >Quem Matou hitler?</h1>
 <br/>
 
         <View>
@@ -17,11 +19,30 @@ const Quiz2 = () => {
 
 <br/>
 
-            <View style= {styles.buttons}>
-            <Button>Vasco</Button>
-            <Button>Suicidio com 6 tiros nas costas</Button>
-            <Button> viajante do tempo</Button>
-            <Button> literalmente ele</Button>
+        <View style= {styles.buttons}>
+
+        <Button 
+        onPress={() => {navigation.navigate("fimRuim")}}
+            title="Vasco"
+             /> 
+<br />
+        <Button 
+        onPress={() => {navigation.navigate("fimRuim")}}
+            title="Suicidio com 6 tiros nas costas"
+            />
+<br />
+        <Button 
+        onPress={() => {navigation.navigate("fimRuim")}}
+            title="viajante do tempo"
+            /> 
+<br />
+         <Button 
+            onPress={() => {navigation.navigate("Quiz3")}}
+            title="literalmente ele"
+            /> 
+<br />
+
+        
             </View>
 
         </View>

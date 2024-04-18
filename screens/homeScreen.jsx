@@ -6,22 +6,15 @@ const homeScreen = ({navigation}) => {
     navigation = useNavigation()
     return (
         <View style= {styles.body}>
-            <Text> Bem vindo ao QUIZ</Text>
-            <Text>Selecione a categoria abaixo </Text>
+            <h1> Bem vindo ao QUIZ</h1>
+            <h2>Selecione a categoria abaixo </h2>
+<br />
             <View> <Button
                 title='História'
                 onPress={() => {navigation.navigate("Historia")}}
                 /></View>
 
-                <View> <Button
-                title='Pergunta 2'
-                onPress={() => {navigation.navigate("Quiz2")}}
-                /></View>
-
-                <View> <Button
-                title='Pergunta 3'
-                onPress={() => {navigation.navigate("Quiz3")}}
-                /></View>
+<br />
                  
             
         </View>

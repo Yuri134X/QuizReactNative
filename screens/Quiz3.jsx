@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 
-const Quiz3 = () => {
-  const [pontos, setPontos] = useState(0);
-  const [feedback, setFeedback] = useState('');
+const Quiz3 = ({navigation}) => {
+  navigation = useNavigation()
 
   return (
     <View style={styles.body}>
-      <Text >Quem descobriu o Brasil?</Text>
+      <h1 >Quem descobriu o Brasil?</h1>
 <br/>
 
       <View>
         <Image
           style={styles.tinyLogo}
           source={{
-            uri: 'https://conteudo.imguol.com.br/c/entretenimento/dc/2018/04/20/envie-um-meme-engracado-para-o-bol-11-97335-6855-1524197722204_v2_615x300.jpg',
+            uri: 'https://conteudo.imguol.com.br/c/entretenimento/dc/2018/04/20/envie-um-meme-engracado-para-o-bol-11-97335-6855-1524197722204_v2_615x300.jpg'
           }}
         />
       </View>
@@ -22,17 +22,17 @@ const Quiz3 = () => {
 <br/>
 
       <View style={styles.buttons}>
-        <Button onPress={() => {
-          if (pontos++ === 0) {
-            setFeedback('Correto!');
-          } else {
-            setFeedback('Errado!');
-          }
-        }}>Pedro Álvares Cabral</Button>
-        <Button>Os indio</Button>
-        <Button> viajante do tempo</Button>
-        <Button> Don pedro 1°</Button>
-        <Text>{pontos}</Text>
+        <Button title='Pedro Álvares Cabral'
+          onPress={() => {navigation.navigate("fimBom")}} />
+<br/>       
+        <Button title='Os indios'
+        onPress={() => {navigation.navigate("fimRuim")}} />
+<br/>
+        <Button title='viajante do tempo'
+        onPress={() => {navigation.navigate("fimRuim")}} />
+<br/>
+        <Button title=' Don pedro 1°'
+        onPress={() => {navigation.navigate("fimRuim")}} />
 
       </View>
 

@@ -1,10 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, Button} from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
-const História = () => {
+const História = ({navigation}) => {
+    navigation = useNavigation()
     return (
         <View style= {styles.body}>
-            <Text >Quem foi o primeiro presidente do Brasil?</Text>
+            <h1 >Quem foi o primeiro presidente do Brasil?</h1>
 <br/>
 
         <View>
@@ -19,21 +21,25 @@ const História = () => {
 
             <View style= {styles.buttons}>
             <Button 
-            onPress={false}
+            onPress={() => {navigation.navigate("fimRuim")}}
             title="Cristiano ronaldo"
             /> 
+            <br />
             <Button 
-            onPress={true}
+            onPress={() => {navigation.navigate("Quiz2")}}
             title="M. Deodoro da fonseca"
             />
+            <br />
             <Button 
-            onPress={false}
+            onPress={() => {navigation.navigate("fimRuim")}}
             title="Bolsonaro"
             /> 
+            <br />
             <Button 
-            onPress={false}
+            onPress={() => {navigation.navigate("fimRuim")}}
             title="fernando collor"
             /> 
+            <br />
             
             </View>
 
@@ -54,6 +60,7 @@ const styles = StyleSheet.create({
      },
      tinyLogo: {
         width: 200,
-        height: 200,}
+        height: 200,
+    borderColor: 'black'}
 })
 

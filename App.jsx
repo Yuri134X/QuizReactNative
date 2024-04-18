@@ -6,6 +6,8 @@ import homeScreen from './screens/homeScreen';
 import História from './screens/Historia';
 import Quiz2 from './screens/Quiz2';
 import Quiz3 from './screens/Quiz3';
+import fimBom from './screens/fimBom';
+import fimRuim from './screens/fimRuim';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +24,10 @@ export default function App() {
           <Stack.Screen name='Quiz2' component={Quiz2} />
 
           <Stack.Screen name='Quiz3' component={Quiz3} />
+
+          <Stack.Screen name= 'fimBom' component={fimBom} />
+
+          <Stack.Screen name= 'fimRuim' component={fimRuim} />
 
           
         </Stack.Navigator>
