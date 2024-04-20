@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, View, Image } from 'react-native'
 
 const fimRuim = () => {
     return (
         <View style= {styles.body}>
-            <h1>Infelizmente você falhou com o quiz, volte para o fundamental pq vc é uma vergonha para a humanidade</h1>
+            <h1 style={styles.ask}>Infelizmente você falhou com o quiz, volte para o fundamental pq vc é uma vergonha para a humanidade</h1>
+            <h3>Seu LIXO de pontuação foi: 0</h3>
 <br/>
         <View>
             <Image
@@ -25,9 +26,16 @@ const styles = StyleSheet.create({
     body: {
         flex: 1, 
         justifyContent: 'center',
-        alignItems:'center'
+        alignItems:'center',
+        color: 'white',
+        backgroundColor: 'black'
      },
      tinyLogo: {
         width: 300,
-        height: 200,}
+        height: 200,},
+
+        ask: {
+            textAlign: 'center',
+            margin: '5%'
+        }
 })

@@ -2,11 +2,11 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-const Quiz2 = ({navigation}) => {
+const pergunta2 = ({navigation}) => {
     navigation = useNavigation()
     return (
         <View style= {styles.body}>
-            <h1 >Quem Matou hitler?</h1>
+            <h1 style= {styles.texto} >Quem Matou hitler?</h1>
 <br/>
 
         <View>
@@ -23,7 +23,7 @@ const Quiz2 = ({navigation}) => {
 
         <Button 
         onPress={() => {navigation.navigate("fimRuim")}}
-            title="Vasco"
+            title="Alemães rebeldes"
              /> 
 <br />
         <Button 
@@ -33,11 +33,11 @@ const Quiz2 = ({navigation}) => {
 <br />
         <Button 
         onPress={() => {navigation.navigate("fimRuim")}}
-            title="viajante do tempo"
+            title="Soldados americanos"
             /> 
 <br />
          <Button 
-            onPress={() => {navigation.navigate("Quiz3")}}
+            onPress={() => {navigation.navigate("pergunta3")}}
             title="literalmente ele"
             /> 
 <br />
@@ -49,19 +49,26 @@ const Quiz2 = ({navigation}) => {
     )
 }
 
-export default Quiz2
+export default pergunta2
 
 const styles = StyleSheet.create({
     body: {
         flex: 1, 
         justifyContent: 'center',
         alignItems:'center',
+        color: 'white',
+        backgroundColor: 'black'
      },
      buttons:{
         display: 'flex',
      },
      tinyLogo: {
         width: 200,
-        height: 200,}
+        height: 200,},
+
+        texto: {
+            textAlign: 'center',
+            fontFamily: 'Comic Sans MS',
+            fontSize: "150%"}
 })
 
