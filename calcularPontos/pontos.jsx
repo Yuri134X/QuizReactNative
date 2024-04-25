@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 const Pergunta = () => {
   const navigation = useNavigation();
 
-  const [pontos, setPontos] = useState(0);
+  const [pontos, setPontos] = useState();
   const [respostaCorreta, setRespostaCorreta] = useState(false);
   const [botoesAtivados, setBotoesAtivados] = useState(true);
   const [mostrarMensagem, setMostrarMensagem] = useState(false);

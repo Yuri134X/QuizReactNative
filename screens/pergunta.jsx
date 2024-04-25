@@ -15,6 +15,7 @@ const Pergunta = () => {
       setPontos(pontos + 2);
       setRespostaCorreta(true);
     } else {
+      
       setRespostaCorreta(false);
       setMostrarMensagem(true);
     }

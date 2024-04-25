@@ -7,7 +7,7 @@ const pergunta4 = ({navigation, route}) => {
   const { pontuação } = route.params;
   navigation = useNavigation()
 
-  const [pontos, setPontos] = useState(0);
+    const [pontos, setPontos] = useState(pontuação);
     const [respostaCorreta, setRespostaCorreta] = useState(false);
     const [botoesAtivados, setBotoesAtivados] = useState(true);
     const [mostrarMensagem, setMostrarMensagem] = useState(false);
@@ -17,6 +17,7 @@ const pergunta4 = ({navigation, route}) => {
           setPontos(pontuação + 2);
           setRespostaCorreta(true);
       } else {
+        
           setRespostaCorreta(false);
           setMostrarMensagem(true);
       }
@@ -24,12 +25,12 @@ const pergunta4 = ({navigation, route}) => {
   };
 
   const irParaProximaPergunta = () => {
-      navigation.navigate('pergunta5', {pontuação: pontos });
+      navigation.navigate('pergunta5', { pontuação: pontos });
   };
 
   return (
     <ScrollView contentContainerStyle={styles.body}>
-            <Text style={styles.texto}>Pontuação: {pontos} </Text>
+            <Text style={styles.texto}>Pontuação: {pontuação} </Text>
             <Text style={styles.texto}>Em que idade Dom Pedro II se tornou Imperador do Brasil?</Text>
             <Image
                 style={styles.tinyLogo}

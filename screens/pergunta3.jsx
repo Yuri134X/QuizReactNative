@@ -6,7 +6,7 @@ const pergunta3 = ({navigation, route}) => {
   const { pontuação } = route.params;
   navigation = useNavigation()
 
-    const [pontos, setPontos] = useState(0);
+    const [pontos, setPontos] = useState(pontuação);
     const [respostaCorreta, setRespostaCorreta] = useState(false);
     const [botoesAtivados, setBotoesAtivados] = useState(true);
     const [mostrarMensagem, setMostrarMensagem] = useState(false);
@@ -16,6 +16,7 @@ const pergunta3 = ({navigation, route}) => {
             setPontos(pontuação + 2);
             setRespostaCorreta(true);
         } else {
+          
             setRespostaCorreta(false);
             setMostrarMensagem(true);
         }
@@ -23,12 +24,12 @@ const pergunta3 = ({navigation, route}) => {
     };
 
     const irParaProximaPergunta = () => {
-        navigation.navigate('pergunta4', {pontuação: pontos });
+        navigation.navigate('pergunta4', { pontuação: pontos });
     };
 
   return (
     <ScrollView contentContainerStyle={styles.body}>
-            <Text style={styles.texto}>Pontuação: {pontos} </Text>
+            <Text style={styles.texto}>Pontuação: {pontuação} </Text>
             <Text style={styles.texto}>Quem descobriu o Brasil em 1500?</Text>
             <Image
                 style={styles.tinyLogo}
@@ -38,7 +39,7 @@ const pergunta3 = ({navigation, route}) => {
             <ScrollView contentContainerStyle={styles.buttons}>
                 <br />
                 <Button
-                    title='Pedro Álvares Cabra'
+                    title='Pedro Álvares Cabral'
                     onPress={() => handleResposta('A')}
                     disabled={!botoesAtivados}
                 />

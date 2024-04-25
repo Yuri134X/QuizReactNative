@@ -3,10 +3,13 @@ import { StyleSheet, Text, ScrollView, Image, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const pergunta2 = ({ navigation, route}) => {
-    const { pontuação } = route.params;
     navigation = useNavigation();
+    
+    
+    const { pontuação } = route.params;
+    
 
-    const [pontos, setPontos] = useState(0);
+    const [pontos, setPontos] = useState(pontuação);
     const [respostaCorreta, setRespostaCorreta] = useState(false);
     const [botoesAtivados, setBotoesAtivados] = useState(true);
     const [mostrarMensagem, setMostrarMensagem] = useState(false);
@@ -16,6 +19,7 @@ const pergunta2 = ({ navigation, route}) => {
             setPontos(pontuação + 2);
             setRespostaCorreta(true);
         } else {
+            
             setRespostaCorreta(false);
             setMostrarMensagem(true);
         }
@@ -64,8 +68,8 @@ const pergunta2 = ({ navigation, route}) => {
                 <br />
             </ScrollView>
 
-            {respostaCorreta && <Text style={styles.texto}>Resposta correta! </Text>}
-            {mostrarMensagem && <Text style={styles.texto}>Resposta incorreta! </Text>}
+            {respostaCorreta && <Text style={styles.texto}>Resposta Correta! </Text>}
+            {mostrarMensagem && <Text style={styles.texto}>Resposta Incorreta! </Text>}
             
             <Button
                 title="Próxima pergunta"

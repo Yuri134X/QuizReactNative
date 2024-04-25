@@ -6,7 +6,7 @@ const pergunta5 = ({navigation, route}) => {
   const { pontuação } = route.params;
   navigation = useNavigation()
 
-  const [pontos, setPontos] = useState(0);
+    const [pontos, setPontos] = useState(pontuação);
     const [respostaCorreta, setRespostaCorreta] = useState(false);
     const [botoesAtivados, setBotoesAtivados] = useState(true);
     const [mostrarMensagem, setMostrarMensagem] = useState(false);
@@ -16,6 +16,7 @@ const pergunta5 = ({navigation, route}) => {
           setPontos(pontuação + 2);
           setRespostaCorreta(true);
       } else {
+        
           setRespostaCorreta(false);
           setMostrarMensagem(true);
       }
@@ -23,12 +24,12 @@ const pergunta5 = ({navigation, route}) => {
   };
 
   const irParaProximaPergunta = () => {
-      navigation.navigate('fimBom', {pontuação: pontos });
+      navigation.navigate('fimBom', { pontuação: pontos });
   };
 
   return (
     <ScrollView contentContainerStyle={styles.body}>
-           <Text style={styles.texto}>Pontuação: {pontos} </Text>
+           <Text style={styles.texto}>Pontuação: {pontuação} </Text>
           <Text style={styles.texto}>Qual evento marcou o início oficial da Segunda Guerra Mundial?</Text>
           <Image
               style={styles.tinyLogo}
