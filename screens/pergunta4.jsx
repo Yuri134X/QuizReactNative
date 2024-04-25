@@ -1,42 +1,79 @@
-import { StyleSheet, View, Image, Button } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, ScrollView, Image, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
 
-const pergunta4 = ({navigation}) => {
+
+const pergunta4 = ({navigation, route}) => {
+  const { pontuação } = route.params;
   navigation = useNavigation()
+
+  const [pontos, setPontos] = useState(0);
+    const [respostaCorreta, setRespostaCorreta] = useState(false);
+    const [botoesAtivados, setBotoesAtivados] = useState(true);
+    const [mostrarMensagem, setMostrarMensagem] = useState(false);
+
+    const handleResposta = (resposta) => {
+      if (resposta === 'C') {
+          setPontos(pontuação + 2);
+          setRespostaCorreta(true);
+      } else {
+          setRespostaCorreta(false);
+          setMostrarMensagem(true);
+      }
+      setBotoesAtivados(false);
+  };
+
+  const irParaProximaPergunta = () => {
+      navigation.navigate('pergunta5', {pontuação: pontos });
+  };
+
   return (
-    
-    <View style={styles.body}>
-      <h1 style= {styles.texto}>Com que idade Dom Pedro II tornou-se imperador do Brasil?</h1>
-<br/>
+    <ScrollView contentContainerStyle={styles.body}>
+            <Text style={styles.texto}>Pontuação: {pontos} </Text>
+            <Text style={styles.texto}>Em que idade Dom Pedro II se tornou Imperador do Brasil?</Text>
+            <Image
+                style={styles.tinyLogo}
+                source={require('../imagens/D. Pedro II.png')}
+            />
 
-      <View>
-        <Image
-          style={styles.tinyLogo}
-          source={{
-            uri: 'https://s2.glbimg.com/6McDRfEMsO5NCUWzGzVMvAawvE0=/620x620/e.glbimg.com/og/ed/f/original/2020/09/03/dom-pedro-ii.jpg'
-          }}
-        />
-      </View>
+            <ScrollView contentContainerStyle={styles.buttons}>
+                <br />
+                <Button
+                    title='5 Anos'
+                    onPress={() => handleResposta('A')}
+                    disabled={!botoesAtivados}
+                />
+                <br />
+                <Button
+                    title='9 Anos'
+                    onPress={() => handleResposta('B')}
+                    disabled={!botoesAtivados}
+                />
+                <br />
+                <Button
+                    title='14 Anos'
+                    onPress={() => handleResposta('C')}
+                    disabled={!botoesAtivados}
+                />
+                <br />
 
-<br/>
+                <Button
+                    title='18 Anos'
+                    onPress={() => handleResposta('D')}
+                    disabled={!botoesAtivados}
+                />
+                <br />
+            </ScrollView>
 
-      <View style={styles.buttons}>
-        <Button title='5 anos'
-          onPress={() => {navigation.navigate("fimRuim")}} />
-<br/>       
-        <Button title='18 anos'
-        onPress={() => {navigation.navigate("fimRuim")}} />
-<br/>
-        <Button title='14 anos'
-        onPress={() => {navigation.navigate("pergunta5")}} />
-<br/>
-        <Button title='15 anos e 3 meses'
-        onPress={() => {navigation.navigate("fimRuim")}} />
-
-      </View>
-
-    </View>
+            {respostaCorreta && <Text style={styles.texto}>Resposta correta! </Text>}
+            {mostrarMensagem && <Text style={styles.texto}>Resposta incorreta! </Text>}
+            
+            <Button
+                title="Próxima pergunta"
+                onPress={irParaProximaPergunta}
+                disabled={!respostaCorreta && !mostrarMensagem}
+            />
+        </ScrollView>
   );
 }
 
@@ -44,7 +81,7 @@ export default pergunta4
 
 const styles = StyleSheet.create({
   body: {
-    flex: 1, 
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems:'center',
     color: 'white',
@@ -59,6 +96,8 @@ const styles = StyleSheet.create({
   },
   texto: {
     textAlign: 'center',
-    fontFamily: 'Comic Sans MS',
-    fontSize: "150%"}
+        fontFamily: 'Comic Sans MS',
+        fontSize: 30,
+        color: 'white',
+  }
 })

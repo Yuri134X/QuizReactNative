@@ -1,12 +1,13 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-const fimBom = () => {
+const fimBom = ({ route }) => {
+    const { pontuação } = route.params;
     return (
         <View style= {styles.body}>
             <View style={styles.text}>
             <h1>Parabéns, Você zerou o quiz</h1>
-            <h3> com a pontuação: </h3>
+            <h3> com a pontuação:{ pontuação } </h3>
             </View>
 <br/>
         </View>

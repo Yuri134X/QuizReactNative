@@ -1,75 +1,97 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image, Button } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react';
+import { StyleSheet, Text, ScrollView, Image, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const pergunta = ({navigation}) => {
-    navigation = useNavigation()
-    return (
-      <View style= {styles.body}>
-      <h1 style= {styles.texto}>Quem foi o primeiro presidente do Brasil?</h1>
-<br/>
+const Pergunta = () => {
+  const navigation = useNavigation();
 
-  <View>
+  const [pontos, setPontos] = useState(0);
+  const [respostaCorreta, setRespostaCorreta] = useState(false);
+  const [botoesAtivados, setBotoesAtivados] = useState(true);
+  const [mostrarMensagem, setMostrarMensagem] = useState(false);
+
+  const handleResposta = (resposta) => {
+    if (resposta === 'B') {
+      setPontos(pontos + 2);
+      setRespostaCorreta(true);
+    } else {
+      setRespostaCorreta(false);
+      setMostrarMensagem(true);
+    }
+    setBotoesAtivados(false);
+  };
+
+  const irParaProximaPergunta = () => {
+    navigation.navigate('pergunta2', { pontuação: pontos });
+  };
+
+  return (
+    <ScrollView contentContainerStyle={styles.body}>
+      <Text style={styles.texto}>Pontuação: {pontos}</Text>
+      <Text style={styles.texto}>Quem foi o primeiro presidente do Brasil?</Text>
       <Image
-      style={styles.tinyLogo}
-      source={{
-      uri: 'https://rankingpesquisa.com.br/wp-content/uploads/2021/07/223860897_4116094155147465_3539709508465205851_n.jpg',
-      }}/>
-  </View>
+        style={styles.tinyLogo}
+        source={require('../imagens/faixa presidente.jpg')}
+      />
+      <ScrollView contentContainerStyle={styles.buttons}>
+        <br />
+        <Button
+          title='Luis Inacio Lula da Silva'
+          onPress={() => handleResposta('A')}
+          disabled={!botoesAtivados}
+        />
+        <br />
+        <Button
+          title='Deodoro da Fonseca'
+          onPress={() => handleResposta('B')}
+          disabled={!botoesAtivados}
+        />
+        <br />
+        <Button
+          title='Juscelino Kubitschek'
+          onPress={() => handleResposta('C')}
+          disabled={!botoesAtivados}
+        />
+        <br />
+        <Button
+          title='Tancredo Neves'
+          onPress={() => handleResposta('D')}
+          disabled={!botoesAtivados}
+        />
+        <br />
+      </ScrollView>
+      {respostaCorreta && <Text style={styles.texto}>Resposta correta! </Text>}
+      {mostrarMensagem && <Text style={styles.texto}>Resposta incorreta! </Text>}
+      <Button
+        title="Próxima pergunta"
+        onPress={irParaProximaPergunta}
+        disabled={!respostaCorreta && !mostrarMensagem}
+      />
+    </ScrollView>
+  );
+};
 
-<br/>
-
-        <View style= {styles.buttons}>
-
-        <Button 
-        onPress={() => {navigation.navigate("fimRuim")}}
-            title="Luis Inacio"
-             /> 
-<br />
-        <Button 
-        onPress={() => {navigation.navigate("pergunta2")}}
-        title="M. Deodoro da fonseca"
-            />
-<br />
-        <Button 
-        onPress={() => {navigation.navigate("fimRuim")}}
-        title="Bolsonaro"
-            /> 
-<br />
-         <Button 
-             onPress={() => {navigation.navigate("fimRuim")}}
-             title="fernando collor"
-            /> 
-<br />
-
-        
-            </View>
-
-        </View>
-    )
-}
-
-export default pergunta
+export default Pergunta;
 
 const styles = StyleSheet.create({
-    body: {
-        flex: 1, 
-        justifyContent: 'center',
-        alignItems:'center',
-        color: 'white',
-        backgroundColor: 'black'
-     },
-     buttons:{
-        display: 'flex',
-        margin: '5%'
-     },
-     tinyLogo: {
-        width: 200,
-        height: 200},
-
-        texto: {
-          textAlign: 'center',
-          fontFamily: 'Comic Sans MS',
-          fontSize: "150%"}
-})
-
+  body: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems:'center',
+    color: 'white',
+    backgroundColor: 'black'
+  },
+  buttons: {
+    marginTop: 10,
+  },
+  tinyLogo: {
+    width: 200,
+    height: 200,
+  },
+  texto: {
+    textAlign: 'center',
+    fontFamily: 'Comic Sans MS',
+    fontSize: 20,
+    color: 'white',
+  },
+});

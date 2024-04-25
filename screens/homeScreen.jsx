@@ -19,11 +19,7 @@ const homeScreen = ({navigation}) => {
                 /></View>
 
 <br />
-        <View>
-        <Button
-        title='Teste'
-        onPress={() => {navigation.navigate("Teste")}}
-        /></View>         
+        
             
         </View>
     )

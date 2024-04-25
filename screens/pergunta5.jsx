@@ -1,42 +1,78 @@
-import { StyleSheet, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, ScrollView, Image, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useState } from 'react';
 
-const pergunta5 = ({navigation}) => {
+const pergunta5 = ({navigation, route}) => {
+  const { pontuação } = route.params;
   navigation = useNavigation()
+
+  const [pontos, setPontos] = useState(0);
+    const [respostaCorreta, setRespostaCorreta] = useState(false);
+    const [botoesAtivados, setBotoesAtivados] = useState(true);
+    const [mostrarMensagem, setMostrarMensagem] = useState(false);
+
+    const handleResposta = (resposta) => {
+      if (resposta === 'B') {
+          setPontos(pontuação + 2);
+          setRespostaCorreta(true);
+      } else {
+          setRespostaCorreta(false);
+          setMostrarMensagem(true);
+      }
+      setBotoesAtivados(false);
+  };
+
+  const irParaProximaPergunta = () => {
+      navigation.navigate('fimBom', {pontuação: pontos });
+  };
+
   return (
-    
-    <View style={styles.body}>
-      <h1 style= {styles.texto}>Quem liderou a 2° guerra mundial?</h1>
-<br/>
+    <ScrollView contentContainerStyle={styles.body}>
+           <Text style={styles.texto}>Pontuação: {pontos} </Text>
+          <Text style={styles.texto}>Qual evento marcou o início oficial da Segunda Guerra Mundial?</Text>
+          <Image
+              style={styles.tinyLogo}
+              source={require('../imagens/segunda guerra.jpg')}
+            />
 
-      <View>
-        <Image
-          style={styles.tinyLogo}
-          source={{
-            uri: 'https://img.cancaonova.com/cnimages/canais/uploads/sites/11/2023/06/08-Cidade-brasileira-foi-a-que-mais-enviou-soldados-para-a-Segunda-Guerra-FOTO-GENILSON-PACETTI.png'
-          }}
-        />
-      </View>
+            <ScrollView contentContainerStyle={styles.buttons}>
+                <br />
+                <Button
+                    title='O ataque japonês a Pearl Harbor'
+                    onPress={() => handleResposta('A')}
+                    disabled={!botoesAtivados}
+                />
+                <br />
+                <Button
+                    title='A invasão da Polônia pela Alemanha nazista'
+                    onPress={() => handleResposta('B')}
+                    disabled={!botoesAtivados}
+                />
+                <br />
+                <Button
+                    title='O tratado de não-agressão entre Alemanha e União Soviética'
+                    onPress={() => handleResposta('C')}
+                    disabled={!botoesAtivados}
+                />
+                <br />
 
-<br/>
+                <Button
+                    title='O ataque italiano à Etiópia'
+                    onPress={() => handleResposta('D')}
+                    disabled={!botoesAtivados}
+                />
+                <br />
+            </ScrollView>
 
-      <View style={styles.buttons}>
-        <Button title='Adolf Hitler e Benito Mussolini'
-          onPress={() => {navigation.navigate("fimBom")}} />
-<br/>       
-        <Button title='Adolf hitler'
-        onPress={() => {navigation.navigate("fimRuim")}} />
-<br/>
-        <Button title='Josef Stalin'
-        onPress={() => {navigation.navigate("fimRuim")}} />
-<br/>
-        <Button title='Joseph Goebbels'
-        onPress={() => {navigation.navigate("fimRuim")}} />
-
-      </View>
-
-    </View>
+            {respostaCorreta && <Text style={styles.texto}>Resposta correta! </Text>}
+            {mostrarMensagem && <Text style={styles.texto}>Resposta incorreta! </Text>}
+            
+            <Button
+                title="Próxima pergunta"
+                onPress={irParaProximaPergunta}
+                disabled={!respostaCorreta && !mostrarMensagem}
+            />
+        </ScrollView>
   );
 }
 
@@ -44,11 +80,11 @@ export default pergunta5
 
 const styles = StyleSheet.create({
   body: {
-    flex: 1, 
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems:'center',
     color: 'white',
-     backgroundColor: 'black'
+    backgroundColor: 'black'
   },
   buttons:{
     display: 'flex',
@@ -59,6 +95,8 @@ const styles = StyleSheet.create({
   },
   texto: {
     textAlign: 'center',
-    fontFamily: 'Comic Sans MS',
-    fontSize: "150%"}
+        fontFamily: 'Comic Sans MS',
+        fontSize: 30,
+        color: 'white',
+      }
 })
