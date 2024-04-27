@@ -10,7 +10,7 @@ import pergunta3 from './screens/pergunta3';
 import pergunta4 from './screens/pergunta4';
 import pergunta5 from './screens/pergunta5';
 import Pergunta from './screens/pergunta';
-import Quiz from './calcularPontos/pontos';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +22,7 @@ export default function App() {
 
           <Stack.Screen name='Home' component={homeScreen} />
 
-          <Stack.Screen name='Teste' component={Quiz} />
+
 
           <Stack.Screen name='pergunta' component={Pergunta} />
 
