@@ -10,6 +10,8 @@ import pergunta3 from './screens/pergunta3';
 import pergunta4 from './screens/pergunta4';
 import pergunta5 from './screens/pergunta5';
 import Pergunta from './screens/pergunta';
+import api from './screens/api';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -18,7 +20,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home'>
+        <Stack.Navigator initialRouteName='api'>
 
           <Stack.Screen name='Home' component={homeScreen} />
 
@@ -38,6 +40,7 @@ export default function App() {
 
           <Stack.Screen name= 'fimRuim' component={fimRuim} />
 
+          <Stack.Screen name= 'api' component={api} />
           
         </Stack.Navigator>
 
